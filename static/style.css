@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #0d1117;
+    --header-bg: #161b22;
+    --accent-color: #58a6ff;
+    --text-color: #c9d1d9;
+    --sidebar-bg: #161b22;
+    --modal-bg: #21262d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    background-color: var(--header-bg);
+    padding: 0.4rem 1rem; /* Reduced from 1rem */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem; /* Reduced from 1.5rem */
+    padding: 0.2rem 0.5rem; /* Reduced from 0.5rem */
+}
+
+#new-session-btn {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    position: relative;
+    background-color: #000;
+}
+
+#terminal-container {
+    flex: 1;
+    width: 100%;
+    background-color: #000;
+    overflow: auto; /* Allow scrolling/panning */
+    position: relative;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: var(--sidebar-bg);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    z-index: 200;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+}
+
+#sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+}
+
+#session-list {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+#session-list li {
+    padding: 1rem;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+#session-list li:hover {
+    background-color: #21262d;
+}
+
+#session-list li.active {
+    background-color: #1f242b;
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+#modal-overlay.hidden {
+    display: none;
+}
+
+.modal {
+    background-color: var(--modal-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal h3 {
+    margin-bottom: 1rem;
+}
+
+.modal input {
+    width: 100%;
+    padding: 0.8rem;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-actions button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+#create-new {
+    background-color: #238636;
+    color: white;
+}
+
+#create-new:hover {
+    background-color: #2ea043;
+}
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+    #sidebar {
+        width: 100%;
+    }
+}
+
+/* Landscape optimization to save vertical space */
+@media (orientation: landscape) and (max-height: 500px) {
+    header {
+        padding: 0.1rem 0.8rem;
+    }
+    header h1 {
+        font-size: 0.9rem;
+    }
+    button {
+        font-size: 1rem;
+        padding: 0.1rem 0.4rem;
+    }
+}

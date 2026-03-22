@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tmux Phone Client</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <button id="menu-toggle">☰</button>
+            <h1 id="current-session-name">Tmux Client</h1>
+            <button id="new-session-btn">+</button>
+        </header>
+
+        <nav id="sidebar" class="hidden">
+            <div class="sidebar-header">
+                <h2>Sessions</h2>
+                <button id="close-menu">✕</button>
+            </div>
+            <ul id="session-list">
+                <!-- Session items will be injected here -->
+            </ul>
+        </nav>
+
+        <main>
+            <div id="terminal-container"></div>
+        </main>
+
+        <div id="modal-overlay" class="hidden">
+            <div class="modal">
+                <h3>New Session</h3>
+                <input type="text" id="new-session-name" placeholder="Session Name">
+                <div class="modal-actions">
+                    <button id="cancel-new">Cancel</button>
+                    <button id="create-new">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
