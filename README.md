@@ -15,6 +15,16 @@ A FastAPI-based bridge that exposes tmux sessions over WebSockets, providing a w
 
 ### Local Setup
 
+The easiest way to run the project is using [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv run main.py
+```
+
+This will automatically create a virtual environment, install the dependencies listed in `pyproject.toml`, and run the server.
+
+Alternatively, you can use standard python tools:
+
 1. **Create and activate a virtual environment:**
    ```bash
    python3 -m venv venv
